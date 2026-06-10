@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Facturación — iad México</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:100;
+  background:#fff;border-bottom:1px solid #E8EFF5;
+  padding:14px 40px;
+  display:flex;align-items:center;gap:10px;
+}
+.logo{display:flex;align-items:center;gap:8px;}
+.logo-box{width:30px;height:30px;background:#00628C;border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.logo-box span{color:#fff;font-weight:800;font-size:12px;}
+.logo-name{color:#00628C;font-weight:700;font-size:14px;letter-spacing:0.1em;}
+header .sep{flex:1;}
+.header-badge{background:rgba(0,98,140,0.08);color:#00628C;font-size:12px;font-weight:600;padding:6px 14px;border-radius:100px;}
+
+/* EMAIL BANNER */
+.email-banner{
+  background:#E8F4FA;border-bottom:1px solid #C5DDE9;
+  padding:10px 40px;
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+}
+.email-banner p{font-size:13px;color:#1a1a1a;}
+.email-banner a{color:#00628C;font-weight:700;text-decoration:none;}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#00628C 0%,#1484A9 100%);
+  padding:60px 40px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;right:-100px;top:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);
+  border-radius:100px;padding:6px 14px;
+  font-size:12px;font-weight:600;color:#fff;margin-bottom:20px;
+}
+.hero h1{font-size:42px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:12px;}
+.hero h1 span{color:#0F9FD6;}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.75);max-width:560px;margin:0 auto;}
+
+/* CALCULATRICE */
+.calc-section{padding:60px 40px;background:#F4F7FA;}
+.calc-inner{max-width:900px;margin:0 auto;}
+.calc-card{background:#fff;border-radius:20px;padding:48px;box-shadow:0 8px 40px rgba(0,98,140,0.10);}
+.calc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#636363;margin-bottom:10px;display:block;}
+.input-wrap{position:relative;margin-bottom:12px;}
+.input-wrap .prefix{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#00628C;font-weight:700;font-size:22px;}
+.big-input{
+  width:100%;padding:18px 18px 18px 40px;
+  border:2px solid #DCE8EF;border-radius:12px;
+  font-size:32px;font-weight:800;color:#00628C;
+  font-family:'Inter',sans-serif;outline:none;transition:border 0.2s;
+}
+.big-input:focus{border-color:#00628C;}
+.big-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+input[type="range"]{width:100%;accent-color:#00628C;margin-bottom:0;cursor:pointer;}
+
+/* TABLEAUX */
+.tables-section{padding:60px 40px;background:#fff;}
+.tables-inner{max-width:1100px;margin:0 auto;}
+.section-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:#0F9FD6;margin-bottom:12px;}
+.section-title{font-size:32px;font-weight:800;color:#00628C;margin-bottom:8px;}
+.section-sub{font-size:15px;color:#636363;margin-bottom:40px;}
+.tables-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.tax-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,98,140,0.08);border:1.5px solid #DCE8EF;}
+.tax-card.featured{border-color:#00628C;box-shadow:0 8px 32px rgba(0,98,140,0.16);}
+.tax-header{background:#00628C;color:#fff;padding:14px 20px;font-size:13px;font-weight:700;text-align:center;letter-spacing:0.04em;}
+.tax-header.dark{background:#005577;}
+.tax-header small{display:block;font-size:10px;font-weight:500;color:rgba(255,255,255,0.6);margin-top:2px;letter-spacing:0;}
+.tax-row{display:flex;justify-content:space-between;align-items:center;padding:11px 20px;border-bottom:1px solid #E8EFF5;font-size:13px;}
+.tax-row .lbl{color:#636363;}
+.tax-row .val{font-weight:600;color:#1a1a1a;}
+.tax-row.negative .val{color:#c0392b;}
+.tax-row.negative .lbl{color:#c0392b;}
+.tax-row.total{background:#E8F4FA;font-weight:800;font-size:15px;color:#00628C;border-top:2px solid #00628C;}
+.tax-card.featured .tax-row.total{background:#00628C;color:#fff;}
+.tax-card.featured .tax-row.total .lbl{color:#fff;}
+.tax-card.featured .tax-row.total .val{color:#fff;}
+.tax-note{font-size:11px;color:#888;padding:10px 20px;border-top:1px solid #E8EFF5;background:#F9FBFC;font-style:italic;}
+
+/* VIDEO */
+.video-section{padding:60px 40px;background:#F4F7FA;}
+.video-inner{max-width:900px;margin:0 auto;}
+.video-legend{
+  font-size:16px;color:#636363;line-height:1.6;margin-bottom:32px;
+  background:#FFF8E7;border-left:3px solid #F5A623;
+  padding:16px 20px;border-radius:0 10px 10px 0;
+}
+.video-legend strong{color:#1a1a1a;}
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.12);border:1.5px solid #DCE8EF;}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+/* SECTION CALCULATRICE GRANDE */
+.calc-bottom{background:#F4F7FA;padding:80px 40px;}
+.calc-bottom-inner{max-width:1100px;margin:0 auto;}
+.calc-big-card{
+  background:#fff;border-radius:20px;padding:56px;
+  box-shadow:0 8px 40px rgba(0,98,140,0.1);
+  border:1px solid #DCE8EF;
+  display:flex;gap:60px;align-items:center;
+}
+.calc-big-left{flex:1;}
+.calc-big-left h2{font-size:32px;font-weight:800;color:#00628C;margin-bottom:12px;}
+.calc-big-left p{font-size:15px;color:#636363;line-height:1.7;margin-bottom:32px;}
+.calc-big-right{width:400px;flex-shrink:0;}
+.big-input-wrap{position:relative;margin-bottom:10px;}
+.big-input-wrap .prefix{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#00628C;font-weight:700;font-size:20px;}
+.big-input2{
+  width:100%;padding:16px 16px 16px 34px;
+  border:2px solid #DCE8EF;border-radius:12px;
+  font-size:26px;font-weight:800;color:#00628C;
+  font-family:'Inter',sans-serif;outline:none;transition:border 0.2s;
+}
+.big-input2:focus{border-color:#00628C;}
+.big-input2::-webkit-inner-spin-button{-webkit-appearance:none;}
+.big-range{width:100%;accent-color:#00628C;margin-bottom:28px;cursor:pointer;height:6px;}
+.big-results{display:flex;flex-direction:column;gap:12px;}
+.big-regime{
+  border-radius:14px;padding:18px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  border:1.5px solid #DCE8EF;background:#F4F7FA;
+  transition:transform 0.15s;cursor:default;
+}
+.big-regime:hover{transform:translateX(6px);}
+.big-regime.featured{background:#00628C;border-color:#00628C;}
+.br-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#636363;margin-bottom:3px;}
+.big-regime.featured .br-name{color:rgba(255,255,255,0.7);}
+.br-note{font-size:11px;color:#B2B2B2;}
+.big-regime.featured .br-note{color:rgba(255,255,255,0.5);}
+.br-badge{display:inline-block;margin-top:6px;font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(0,98,140,0.08);color:#1484A9;}
+.big-regime.featured .br-badge{background:rgba(255,255,255,0.15);color:#fff;}
+.br-amount{font-size:26px;font-weight:800;color:#00628C;}
+.big-regime.featured .br-amount{color:#fff;}
+
+/* FOOTER */
+footer{background:#00628C;padding:28px 40px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.footer-logo{display:flex;align-items:center;gap:8px;}
+.footer-logo-box{width:32px;height:32px;background:rgba(255,255,255,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.footer-logo-box span{color:#fff;font-weight:800;font-size:12px;}
+.footer-logo-name{color:rgba(255,255,255,0.8);font-size:13px;font-weight:600;letter-spacing:0.08em;}
+footer .sep{flex:1;}
+footer p{font-size:12px;color:rgba(255,255,255,0.5);}
+
+@media(max-width:900px){
+  .tables-grid{grid-template-columns:1fr;}
+  header{padding:14px 20px;}
+  .hero{padding:48px 20px;}
+  .hero h1{font-size:28px;}
+  .calc-section,.tables-section,.video-section{padding:48px 20px;}
+  .calc-card{padding:28px 20px;}
+  footer{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <div class="logo-box"><span>iad</span></div>
+    <span class="logo-name">INMOBILIARIA</span>
+  </div>
+  <div class="sep"></div>
+  <span class="header-badge">Guía de Facturación 2025</span>
+</header>
+
+<!-- EMAIL BANNER -->
+<div class="email-banner">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00628C" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+  <p>¿Dudas sobre tu factura? Escríbenos a&nbsp;<a href="mailto:facturacion@iadmexico.mx">facturacion@iadmexico.mx</a></p>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    Facturación iad México
+  </div>
+  <h1>Calcula tu <span>comisión</span><br>según tu régimen fiscal</h1>
+  <p class="hero-sub">Ingresa tu monto y descubre cuánto recibirás exactamente según tu situación fiscal.</p>
+</div>
+
+<!-- CALCULATRICE -->
+<div class="calc-section">
+  <div class="calc-inner">
+    <div class="calc-card">
+      <span class="calc-label">Monto de comisión sin IVA</span>
+      <div class="input-wrap">
+        <span class="prefix">$</span>
+        <input type="number" class="big-input" id="monto" value="5000" oninput="calcular();document.getElementById('slider').value=this.value"/>
+      </div>
+      <input type="range" id="slider" min="1000" max="100000" step="500" value="5000" oninput="document.getElementById('monto').value=this.value;calcular()"/>
+    </div>
+  </div>
+</div>
+
+<!-- TABLEAUX -->
+<div class="tables-section">
+  <div class="tables-inner">
+    <div class="section-tag">Desglose por régimen</div>
+    <h2 class="section-title">¿Cuánto recibirás?</h2>
+    <p class="section-sub">Los montos se actualizan automáticamente según el importe ingresado.</p>
+    <div class="tables-grid">
+
+      <!-- PERSONA MORAL -->
+      <div class="tax-card">
+        <div class="tax-header">
+          PERSONA MORAL*
+          <small>Empresa / Sociedad</small>
+        </div>
+        <div class="tax-row"><span class="lbl">IMPORTE</span><span class="val" id="m-importe">$ 5,000.00</span></div>
+        <div class="tax-row"><span class="lbl">IVA (16%)</span><span class="val" id="m-iva">$ 800.00</span></div>
+        <div class="tax-row total"><span class="lbl">TOTAL</span><span class="val" id="m-total">$ 5,800.00</span></div>
+        <div class="tax-note">*Persona moral = empresa</div>
+      </div>
+
+      <!-- FÍSICA AE / RIF -->
+      <div class="tax-card featured">
+        <div class="tax-header dark">
+          PERSONA FÍSICA CON AE o RIF**
+          <small>Con retención de IVA</small>
+        </div>
+        <div class="tax-row"><span class="lbl">IMPORTE</span><span class="val" id="r-importe">$ 5,000.00</span></div>
+        <div class="tax-row"><span class="lbl">IVA (16%)</span><span class="val" id="r-iva">$ 800.00</span></div>
+        <div class="tax-row"><span class="lbl">TOTAL bruto</span><span class="val" id="r-bruto">$ 5,800.00</span></div>
+        <div class="tax-row negative"><span class="lbl">RET IVA (2/3)</span><span class="val" id="r-retiva">− $ 533.33</span></div>
+        <div class="tax-row total"><span class="lbl">TOTAL</span><span class="val" id="r-total">$ 5,266.67</span></div>
+        <div class="tax-note">**Física con Act. Empresarial / RIF · NEXIMO retiene 2/3 del IVA y lo declara al SAT</div>
+      </div>
+
+      <!-- RESICO -->
+      <div class="tax-card">
+        <div class="tax-header">
+          RESICO***
+          <small>Régimen Simplificado de Confianza</small>
+        </div>
+        <div class="tax-row"><span class="lbl">IMPORTE</span><span class="val" id="s-importe">$ 5,000.00</span></div>
+        <div class="tax-row"><span class="lbl">IVA (16%)</span><span class="val" id="s-iva">$ 800.00</span></div>
+        <div class="tax-row"><span class="lbl">TOTAL bruto</span><span class="val" id="s-bruto">$ 5,800.00</span></div>
+        <div class="tax-row negative"><span class="lbl">RET IVA (2/3)</span><span class="val" id="s-retiva">− $ 533.33</span></div>
+        <div class="tax-row negative"><span class="lbl">RET ISR (1.25%)</span><span class="val" id="s-retisr">− $ 62.50</span></div>
+        <div class="tax-row total"><span class="lbl">TOTAL</span><span class="val" id="s-total">$ 5,204.17</span></div>
+        <div class="tax-note">***Régimen simplificado de confianza</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="video-inner">
+    <div class="section-tag">Tutorial</div>
+    <h2 class="section-title" style="margin-bottom:20px;">¿Cómo calcular tu comisión?</h2>
+    <div class="video-legend">
+      <strong>Si no sabes cuál es el monto de tu comisión,</strong> a continuación te compartimos este vídeo para que puedas calcularla.
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/oDpVt574T-w" title="Cómo calcular tu comisión iad México" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATRICE GRANDE -->
+<div class="calc-bottom">
+  <div class="calc-bottom-inner">
+    <div class="section-tag" style="margin-bottom:12px;">Calculadora</div>
+    <div class="section-title" style="margin-bottom:48px;">Simula tu comisión</div>
+    <div class="calc-big-card">
+      <div class="calc-big-left">
+        <h2>¿Cuánto vas a cobrar?</h2>
+        <p>Ingresa tu monto de comisión sin IVA y descubre exactamente cuánto recibirás según tu régimen fiscal. Los cálculos se actualizan en tiempo real.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#636363;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00628C" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            IVA calculado al 16% sobre el importe
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#636363;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00628C" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            NEXIMO retiene 2/3 del IVA y lo declara al SAT
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#636363;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00628C" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            El asesor presenta la tercera parte del IVA en su declaración
+          </div>
+        </div>
+      </div>
+      <div class="calc-big-right">
+        <span class="calc-label">Monto a cobrar sin IVA</span>
+        <div class="big-input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" class="big-input2" id="b-monto" value="5000" oninput="bigCalc();document.getElementById('b-slider').value=this.value"/>
+        </div>
+        <input type="range" class="big-range" id="b-slider" min="1000" max="100000" step="500" value="5000" oninput="document.getElementById('b-monto').value=this.value;bigCalc()"/>
+        <div class="big-results">
+          <div class="big-regime">
+            <div><div class="br-name">Persona Moral</div><div class="br-note">IMPORTE + IVA 16%</div><span class="br-badge">Persona Moral = empresa</span></div>
+            <div class="br-amount" id="b-moral">$5,800.00</div>
+          </div>
+          <div class="big-regime featured">
+            <div><div class="br-name">Física AE / RIF</div><div class="br-note">NEXIMO retiene 2/3 del IVA y lo declara al SAT</div><span class="br-badge">Física con Act. Empresarial / RIF</span></div>
+            <div class="br-amount" id="b-rif">$5,266.67</div>
+          </div>
+          <div class="big-regime">
+            <div><div class="br-name">RESICO</div><div class="br-note">RET IVA + RET ISR 1.25%</div><span class="br-badge">Régimen Simplificado de Confianza</span></div>
+            <div class="br-amount" id="b-resico">$5,204.17</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="footer-logo-box"><span>iad</span></div>
+    <span class="footer-logo-name">INMOBILIARIA</span>
+  </div>
+  <div class="sep"></div>
+  <p>Herramienta interna · Para uso exclusivo de asesores iad México</p>
+</footer>
+
+<script>
+function mxn(n){
+  return '$ ' + n.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function mxn2(n){
+  return '$' + n.toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function actualizar(m){
+  const iva = m * 0.16;
+  const bruto = m + iva;
+  const retIva = iva * (2/3);
+  const retIsr = m * 0.0125;
+
+  document.getElementById('m-importe').textContent = mxn(m);
+  document.getElementById('m-iva').textContent = mxn(iva);
+  document.getElementById('m-total').textContent = mxn(bruto);
+
+  document.getElementById('r-importe').textContent = mxn(m);
+  document.getElementById('r-iva').textContent = mxn(iva);
+  document.getElementById('r-bruto').textContent = mxn(bruto);
+  document.getElementById('r-retiva').textContent = '− ' + mxn(retIva);
+  document.getElementById('r-total').textContent = mxn(bruto - retIva);
+
+  document.getElementById('s-importe').textContent = mxn(m);
+  document.getElementById('s-iva').textContent = mxn(iva);
+  document.getElementById('s-bruto').textContent = mxn(bruto);
+  document.getElementById('s-retiva').textContent = '− ' + mxn(retIva);
+  document.getElementById('s-retisr').textContent = '− ' + mxn(retIsr);
+  document.getElementById('s-total').textContent = mxn(bruto - retIva - retIsr);
+
+  document.getElementById('b-moral').textContent = mxn2(bruto);
+  document.getElementById('b-rif').textContent = mxn2(bruto - retIva);
+  document.getElementById('b-resico').textContent = mxn2(bruto - retIva - retIsr);
+}
+
+function calcular(){
+  const m = parseFloat(document.getElementById('monto').value)||0;
+  document.getElementById('slider').value = m;
+  document.getElementById('b-monto').value = m;
+  document.getElementById('b-slider').value = m;
+  actualizar(m);
+}
+
+function bigCalc(){
+  const m = parseFloat(document.getElementById('b-monto').value)||0;
+  document.getElementById('b-slider').value = m;
+  document.getElementById('monto').value = m;
+  document.getElementById('slider').value = m;
+  actualizar(m);
+}
+
+actualizar(5000);
+</script>
+</body>
+</html>
