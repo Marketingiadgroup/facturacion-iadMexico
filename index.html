@@ -125,7 +125,7 @@
   <div class="section-label">Calculadora de comisión</div>
   <div class="card">
     <label class="calc-label">Monto de comisión sin IVA</label>
-    <div class="amount-box">$ <input type="number" id="amtInput" value="5000" min="1000" max="100000" step="500" oninput="updateFromInput(this.value)" placeholder="5,000"></div>
+    <div class="amount-box">$ <input type="number" id="amtInput" value="5000" min="0" max="9999999" step="0.01" oninput="updateFromInput(this.value)" placeholder="5,000"></div>
     <input type="range" min="1000" max="100000" step="500" value="5000" id="slider" oninput="update(this.value)">
 
     <div class="tabs">
@@ -298,14 +298,14 @@
   }
 
   function update(val) {
-    monto = parseInt(val);
+    monto = parseFloat(val);
     document.getElementById('amtInput').value = monto;
     renderGrid();
   }
 
   function updateFromInput(val) {
-    const parsed = parseInt(val.replace(/[^0-9]/g, ''));
-    if (!isNaN(parsed) && parsed >= 1000) {
+    const parsed = parseFloat(val);
+    if (!isNaN(parsed) && parsed > 0) {
       monto = parsed;
       const slider = document.getElementById('slider');
       slider.value = Math.min(parsed, 100000);
