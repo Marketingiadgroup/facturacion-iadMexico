@@ -27,7 +27,8 @@
 
   /* CALCULADORA */
   .calc-label { font-size: 11px; font-weight: 600; color: #6B7280; letter-spacing: 0.09em; text-transform: uppercase; display: block; margin-bottom: 8px; }
-  .amount-box { font-size: 30px; font-weight: 500; color: #111; padding: 12px 16px; border: 1px solid #D1D5DB; border-radius: 8px; margin-bottom: 12px; }
+  .amount-box { font-size: 30px; font-weight: 500; color: #111; padding: 12px 16px; border: 1px solid #D1D5DB; border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .amount-box input { font-size: 30px; font-weight: 500; color: #111; border: none; outline: none; background: transparent; width: 100%; font-family: inherit; }
   input[type=range] { width: 100%; accent-color: #0D6B8C; cursor: pointer; }
 
   .tabs { display: flex; gap: 8px; margin: 1rem 0; }
@@ -124,7 +125,7 @@
   <div class="section-label">Calculadora de comisión</div>
   <div class="card">
     <label class="calc-label">Monto de comisión sin IVA</label>
-    <div class="amount-box">$ <span id="amtDisplay">5,000</span></div>
+    <div class="amount-box">$ <input type="number" id="amtInput" value="5000" min="1000" max="100000" step="500" oninput="updateFromInput(this.value)" placeholder="5,000"></div>
     <input type="range" min="1000" max="100000" step="500" value="5000" id="slider" oninput="update(this.value)">
 
     <div class="tabs">
@@ -298,8 +299,18 @@
 
   function update(val) {
     monto = parseInt(val);
-    document.getElementById('amtDisplay').textContent = monto.toLocaleString('es-MX');
+    document.getElementById('amtInput').value = monto;
     renderGrid();
+  }
+
+  function updateFromInput(val) {
+    const parsed = parseInt(val.replace(/[^0-9]/g, ''));
+    if (!isNaN(parsed) && parsed >= 1000) {
+      monto = parsed;
+      const slider = document.getElementById('slider');
+      slider.value = Math.min(parsed, 100000);
+      renderGrid();
+    }
   }
 
   function setIva(rate, el) {
