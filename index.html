@@ -27,8 +27,7 @@
 
   /* CALCULADORA */
   .calc-label { font-size: 11px; font-weight: 600; color: #6B7280; letter-spacing: 0.09em; text-transform: uppercase; display: block; margin-bottom: 8px; }
-  .amount-box { font-size: 30px; font-weight: 500; color: #111; padding: 12px 16px; border: 1px solid #D1D5DB; border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-  .amount-box input { font-size: 30px; font-weight: 500; color: #111; border: none; outline: none; background: transparent; width: 100%; font-family: inherit; }
+  .amount-box { font-size: 30px; font-weight: 500; color: #111; padding: 12px 16px; border: 1px solid #D1D5DB; border-radius: 8px; margin-bottom: 12px; }
   input[type=range] { width: 100%; accent-color: #0D6B8C; cursor: pointer; }
 
   .tabs { display: flex; gap: 8px; margin: 1rem 0; }
@@ -125,7 +124,7 @@
   <div class="section-label">Calculadora de comisión</div>
   <div class="card">
     <label class="calc-label">Monto de comisión sin IVA</label>
-    <div class="amount-box">$ <input type="number" id="amtInput" value="5000" min="0" max="9999999" step="0.01" oninput="updateFromInput(this.value)" placeholder="5,000"></div>
+    <div class="amount-box">$ <span id="amtDisplay">5,000</span></div>
     <input type="range" min="1000" max="100000" step="500" value="5000" id="slider" oninput="update(this.value)">
 
     <div class="tabs">
@@ -156,7 +155,7 @@
       </div>
       <div class="dato full">
         <div class="dk">Domicilio fiscal</div>
-        <div class="dv">Av. Insurgentes Sur 1082, Piso 2, Of. 2040-2041<br>Entre calle Sacramento y Pilares<br>Col. Insurgentes San Borja, Benito Juárez, C.P. 03100, CDMX</div>
+        <div class="dv">Av Chapultepec 360, Piso 1, Of 1006, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX</div>
       </div>
       <div class="dato">
         <div class="dk">Clave SAT del servicio</div>
@@ -298,19 +297,9 @@
   }
 
   function update(val) {
-    monto = parseFloat(val);
-    document.getElementById('amtInput').value = monto;
+    monto = parseInt(val);
+    document.getElementById('amtDisplay').textContent = monto.toLocaleString('es-MX');
     renderGrid();
-  }
-
-  function updateFromInput(val) {
-    const parsed = parseFloat(val);
-    if (!isNaN(parsed) && parsed > 0) {
-      monto = parsed;
-      const slider = document.getElementById('slider');
-      slider.value = Math.min(parsed, 100000);
-      renderGrid();
-    }
   }
 
   function setIva(rate, el) {
